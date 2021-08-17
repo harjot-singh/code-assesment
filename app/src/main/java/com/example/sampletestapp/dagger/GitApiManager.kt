@@ -6,7 +6,7 @@ import javax.inject.Inject
 class GitApiManager @Inject constructor(val apiClient: TestApi) {
 
     fun fetchCommitDetails(): Single<CommitUiModel> {
-        return apiClient.fetchCommitDetails()
+        return apiClient.fetchCommitDetails(BRANCH_NAME, MAX_COMMITS)
             .map { transformDataToUiModel(it) }
     }
 
@@ -15,6 +15,11 @@ class GitApiManager @Inject constructor(val apiClient: TestApi) {
             listOf(CommitItemViewModel(it.commit.author.name, it.commit.message, it.sha))
         }
         return CommitUiModel(list)
+    }
+
+    companion object {
+        const val BRANCH_NAME = "main"
+        const val MAX_COMMITS = "50"
     }
 }
 

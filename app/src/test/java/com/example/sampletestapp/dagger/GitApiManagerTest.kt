@@ -3,6 +3,7 @@ package com.example.sampletestapp.dagger.com.example.sampletestapp.dagger
 import com.example.sampletestapp.dagger.*
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.verify
 import io.reactivex.Single
 import org.junit.Assert
 import org.junit.Before
@@ -28,10 +29,11 @@ class GitApiManagerTest {
         every { commit.author } returns author
         every { author.name } returns "Harjot"
         val list: List<CommitDetails> = listOf(commitDetails)
-        every { testApi.fetchCommitDetails() } returns Single.just(list)
+        every { testApi.fetchCommitDetails(any(), any()) } returns Single.just(list)
 
         val testObserver = subject.fetchCommitDetails().test()
 
+        verify { testApi.fetchCommitDetails("main", "50") }
         testObserver.assertComplete()
         val items = testObserver.values()[0].list
         Assert.assertEquals("Harjot", items[0].author)
@@ -42,7 +44,7 @@ class GitApiManagerTest {
     @Test
     fun testFetchCommitDetails_apiReturnsError_verfiyError() {
         val error: Throwable = mockk()
-        every { testApi.fetchCommitDetails() } returns Single.error(error)
+        every { testApi.fetchCommitDetails(any(), any()) } returns Single.error(error)
 
         val testObserver = subject.fetchCommitDetails().test()
 
