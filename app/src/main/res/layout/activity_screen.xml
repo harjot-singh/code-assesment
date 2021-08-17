@@ -1,61 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewmodel"
-            type="com.example.sampletestapp.dagger.MainViewModel"/>
-        <import type="android.view.View"/>
+            type="com.example.sampletestapp.dagger.MainViewModel" />
+
+        <import type="android.view.View" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".dagger.MainActivity">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/text1"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@{viewmodel.headingText}"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="H1"/>
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".dagger.MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/commit_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="25dp"
-        app:layout_constraintTop_toBottomOf="@id/text1"
-        app:adapter="@{viewmodel.commitListAdapter}"/>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/text3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@{viewmodel.buttonText}"
-        android:onClick="@{() -> viewmodel.fetchGitDetails()}"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="@id/text1"
-        app:layout_constraintTop_toBottomOf="@id/commit_list"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:text="H3"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="15dp">
 
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:visibility="@{viewmodel.progressBarVisibilty ? View.VISIBLE: View.GONE}"
-        app:layout_constraintEnd_toEndOf="parent"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewmodel.headingText}"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="H1" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/commit_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    app:adapter="@{viewmodel.commitListAdapter}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toTopOf="@id/refresh_button"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text1" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/refresh_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:onClick="@{() -> viewmodel.fetchGitDetails()}"
+                    android:text="@{viewmodel.buttonText}"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="@id/text1"
+                    app:layout_constraintTop_toBottomOf="@id/commit_list"
+                    tools:text="H3" />
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewmodel.progressBarVisibilty ? View.VISIBLE: View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
