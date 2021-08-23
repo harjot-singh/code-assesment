@@ -1,10 +1,14 @@
-package com.example.sampletestapp.dagger
+package com.example.sampletestapp.dagger.views
 
+import android.util.Log
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
+import com.example.sampletestapp.dagger.manager.GitApiManager
+import com.example.sampletestapp.dagger.manager.RxSchedulers
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
@@ -12,7 +16,7 @@ class MainViewModel @Inject constructor(
     val gitApiManager: GitApiManager,
     val commitListAdapter: CommitListAdapter,
     val rxSchedulers: RxSchedulers
-) : ViewModel() {
+) : ViewModel(), LifecycleObserver {
     lateinit var disposable: Disposable
     val headingText = ObservableField<String>("Please find below the commits")
     val buttonText = ObservableField<String>("Refresh Commits")

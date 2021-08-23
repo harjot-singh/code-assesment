@@ -1,5 +1,11 @@
 package com.example.sampletestapp.dagger
 
+import com.example.sampletestapp.dagger.manager.CommitUiModel
+import com.example.sampletestapp.dagger.manager.GitApiManager
+import com.example.sampletestapp.dagger.manager.RxSchedulers
+import com.example.sampletestapp.dagger.views.CommitItemViewModel
+import com.example.sampletestapp.dagger.views.CommitListAdapter
+import com.example.sampletestapp.dagger.views.MainViewModel
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.slot

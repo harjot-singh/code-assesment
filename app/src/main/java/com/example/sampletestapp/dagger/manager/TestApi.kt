@@ -1,7 +1,6 @@
-package com.example.sampletestapp.dagger
+package com.example.sampletestapp.dagger.manager
 
 import io.reactivex.Single
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 

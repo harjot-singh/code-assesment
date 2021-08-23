@@ -1,4 +1,4 @@
-package com.example.sampletestapp.dagger
+package com.example.sampletestapp.dagger.di
 
 import android.app.Application
 

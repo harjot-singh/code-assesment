@@ -1,5 +1,6 @@
-package com.example.sampletestapp.dagger
+package com.example.sampletestapp.dagger.manager
 
+import com.example.sampletestapp.dagger.views.CommitItemViewModel
 import io.reactivex.Single
 import javax.inject.Inject
 

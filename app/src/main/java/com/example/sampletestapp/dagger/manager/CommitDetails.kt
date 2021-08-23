@@ -1,4 +1,4 @@
-package com.example.sampletestapp.dagger
+package com.example.sampletestapp.dagger.manager
 
 import com.google.gson.annotations.SerializedName
 

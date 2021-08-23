@@ -1,4 +1,4 @@
-package com.example.sampletestapp.dagger
+package com.example.sampletestapp.dagger.manager
 
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers

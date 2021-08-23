@@ -7,7 +7,7 @@
 
         <variable
             name="viewmodel"
-            type="com.example.sampletestapp.dagger.CommitItemViewModel" />
+            type="com.example.sampletestapp.dagger.views.CommitItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

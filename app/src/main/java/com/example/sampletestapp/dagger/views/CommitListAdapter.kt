@@ -1,4 +1,4 @@
-package com.example.sampletestapp.dagger
+package com.example.sampletestapp.dagger.views
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

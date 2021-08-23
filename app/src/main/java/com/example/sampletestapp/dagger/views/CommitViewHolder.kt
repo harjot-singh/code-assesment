@@ -1,4 +1,4 @@
-package com.example.sampletestapp.dagger
+package com.example.sampletestapp.dagger.views
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sampletestapp.databinding.ItemCommitListBinding

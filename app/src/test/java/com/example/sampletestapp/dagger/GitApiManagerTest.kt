@@ -1,6 +1,6 @@
 package com.example.sampletestapp.dagger.com.example.sampletestapp.dagger
 
-import com.example.sampletestapp.dagger.*
+import com.example.sampletestapp.dagger.manager.*
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify

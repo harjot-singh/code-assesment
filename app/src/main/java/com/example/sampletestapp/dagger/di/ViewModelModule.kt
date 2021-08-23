@@ -1,6 +1,7 @@
-package com.example.sampletestapp.dagger
+package com.example.sampletestapp.dagger.di
 
 import androidx.lifecycle.ViewModelProvider
+import com.example.sampletestapp.dagger.MyViewModelFactory
 import dagger.Binds
 import dagger.Module
 
