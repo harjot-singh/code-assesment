@@ -1,14 +1,24 @@
 package com.example.sampletestapp.dagger.manager
 
+import com.example.sampletestapp.dagger.database.CommitEntity
+import com.example.sampletestapp.dagger.database.CommitRepository
 import com.example.sampletestapp.dagger.views.CommitItemViewModel
 import io.reactivex.Single
 import javax.inject.Inject
 
-class GitApiManager @Inject constructor(val apiClient: TestApi) {
+class GitApiManager @Inject constructor(
+    val apiClient: TestApi,
+    val commitRepository: CommitRepository
+) {
 
     fun fetchCommitDetails(): Single<CommitUiModel> {
         return apiClient.fetchCommitDetails(BRANCH_NAME, MAX_COMMITS)
             .map { transformDataToUiModel(it) }
+            .doAfterSuccess {
+                it.list.forEach {
+                    commitRepository.insertCommitEntity(CommitEntity(it.sha, it.author, it.message))
+                }
+            }
     }
 
     private fun transformDataToUiModel(list: List<CommitDetails>): CommitUiModel {

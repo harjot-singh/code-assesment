@@ -7,6 +7,9 @@ class App: Application() {
     override fun onCreate() {
         super.onCreate()
 
-        component = DaggerAppComponent.builder().build()
+        component = DaggerAppComponent
+            .builder()
+            .databaseModule(DatabaseModule(applicationContext))
+            .build()
     }
 }
