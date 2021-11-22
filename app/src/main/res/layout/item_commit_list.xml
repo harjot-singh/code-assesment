@@ -24,7 +24,7 @@
             android:textSize="16sp"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintHorizontal_weight="0.3"
+            app:layout_constraintHorizontal_weight="0.25"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/text2"
             app:layout_constraintTop_toTopOf="parent"
@@ -41,7 +41,7 @@
             app:layout_constraintBaseline_toBaselineOf="@id/text1"
             app:layout_constraintEnd_toStartOf="@id/text3"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintHorizontal_weight="0.3"
+            app:layout_constraintHorizontal_weight="0.25"
             app:layout_constraintStart_toEndOf="@id/text1"
             tools:text="H2" />
 
@@ -55,12 +55,28 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBaseline_toBaselineOf="@id/text1"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/date"
             app:layout_constraintHorizontal_bias="1"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintHorizontal_weight="0.4"
+            app:layout_constraintHorizontal_weight="0.25"
             app:layout_constraintStart_toEndOf="@id/text2"
             tools:text="H3 wkfnenfenfenfkefkebfke" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@{viewmodel.date}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintHorizontal_weight="0.25"
+            app:layout_constraintLeft_toRightOf="@id/text3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="08/22/21" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

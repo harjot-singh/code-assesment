@@ -23,7 +23,7 @@ class GitApiManager @Inject constructor(
 
     private fun transformDataToUiModel(list: List<CommitDetails>): CommitUiModel {
         val list = list.flatMap {
-            listOf(CommitItemViewModel(it.commit.author.name, it.commit.message, it.sha))
+            listOf(CommitItemViewModel(it.commit.author.name, it.commit.message, it.sha, it.commit.author.date))
         }
         return CommitUiModel(list)
     }

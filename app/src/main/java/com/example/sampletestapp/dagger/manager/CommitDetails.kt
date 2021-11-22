@@ -13,5 +13,6 @@ data class Commit(
 )
 
 data class Author(
-    @SerializedName("name") val name: String
+    @SerializedName("name") val name: String,
+    @SerializedName("date") val date: String
 )
