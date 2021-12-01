@@ -1,2 +1,3 @@
 rootProject.name = "SampleTestApp"
 include ':app'
+include ':AndroidResources'
